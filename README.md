@@ -96,3 +96,29 @@ OFS = output seperator, for example print $2 $3   then OFS will print between $2
 BEGIN {FS="[><]"; RS="\n\n";OFS=" ";}  # >< are seperators
 $0 ~ search {print }
 ```
+
+#####analyze web logs awk
+######creating summary 
+count.awk
+```
+BEGIN{FS=" ";print "log access:"}
+{ip[$1]++}
+END{for(i in ip)
+print i , " has accessed ",ip[i], " times."
+}
+```
+
+get most popular browser:(add a simple get max function)
+brower.awk
+```
+BEGIN{FS=" ";print "Most polular browser:"}
+{browser[$13]++}
+END{for(i in browser)
+
+if(max<browser[i]){
+max=browser[i];
+maxbrowser=i;
+}
+print maxbrowser, " and " , max
+}
+```
