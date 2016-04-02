@@ -62,9 +62,21 @@ sed -f func.sed filename
 ssh -t user@server sudo sed -i.bak -f /remote/func.sed /remote/file
 ```
 
+#####subsitiution grouping with sed
+######introducing
+```
+sed 's@\([^,]*\),\([^,]*\)@\U\1\L\2@' file          //sub first group with uppercase, second with lowercase
+```
 
-
-
+######numerical group
+in sed, all parentheses need to be escaped
+```
+s/\(^\|[^0-9.]\)\([0-9]\+\)/\1\2/g
+```
+sed can be applied to all files in a folder
+```
+sed -f func.sed folder/*
+```
 
 
 
