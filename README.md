@@ -11,6 +11,64 @@ get version
 ```
 ask -W version
 ```
+#####regular ex
+######identify boud
+word boundaries = space , -  
+\s = space,empty line...
+
+
+#####fundamental sed
+######intro sed
+-n : supress standard output so only matched lines apply  
+```
+sed -n '1,5 p" file   #print 1-5
+sed -n '5,$ p" file   #print 5-last
+```
+######substitute
+```
+sed '1,3 s/old/new/' file
+sed '/^root/ s@/bin/bash@/bin/sh@ ' file          ##change delimiter
+```
+######using substitute
+print line number
+```
+nl filename
+```
+```
+sed '6,9 s/^/   /g' file     #sub line 6-9 prepend space
+```
+
+######insert,append delete
+insert = prepend (insert newline before a line)
+```
+sed ' /^root/ i newline' filename
+sed ' /^root/ i newline' filename
+```
+
+
+######multiple exp
+code reuse
+func.sed
+```
+/^root/ i newline
+/^server/ d
+```
+call it
+```
+sed -f func.sed filename
+```
+######remote edits with ssh
+```
+ssh -t user@server sudo sed -i.bak -f /remote/func.sed /remote/file
+```
+
+
+
+
+
+
+
+
 
 #####fundamental awk
 ######intro awk
