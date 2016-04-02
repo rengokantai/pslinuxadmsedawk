@@ -78,9 +78,51 @@ sed can be applied to all files in a folder
 sed -f func.sed folder/*
 ```
 
+#####execute commands with sed
+######sed
+we have a file list,content is
+```
+/etc/hosts
+```
+we can execute
+```
+sed 's/^/ls -l \e' list      //must have a space after -l
+```
 
+we have a file user,content is
+```
+user1
+user2
+```
+we can execute
+```
+sed 's/^/sudo useradd \e' user     //sudo useradd user1,sudo useradd user2....
+```
 
+```
+tar -tf x.tar  //see names of tar file
+```
 
+######sed in vim
+```
+%s/old/new/g       //all doc
+2,3s/old/new/g     //2-3line
+```
+multireplace
+```
+/^stat/s/^/  /             //replace, add few spaces when line starts from stat
+
+5,7s/^/  /      //line5-7
+```
+######read write files
+in file 1:
+```
+4,10 w while
+```
+in file 2:
+```
+r while
+```
 
 #####fundamental awk
 ######intro awk
