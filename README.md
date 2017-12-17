@@ -39,6 +39,11 @@ ifconfig eth1 | awk -F":" '/string/{print toupper($2 $3)}'
 word boundaries = space , -  
 \s = space,empty line...
 
+### 6 Building an Application Process toValidate Employee Records
+```
+grep -vE '\b[0-9]{3}-[0-9]{2}-[0-9]{4}\b' text
+```
+
 
 #####fundamental sed
 ######intro sed
