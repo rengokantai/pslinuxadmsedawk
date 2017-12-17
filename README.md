@@ -45,19 +45,19 @@ grep -vE '\b[0-9]{3}-[0-9]{2}-[0-9]{4}\b' text
 ```
 
 
-#####fundamental sed
-######intro sed
+## 4. Fundamentals of sed
+### 2 Print Command
 -n : supress standard output so only matched lines apply  
 ```
 sed -n '1,5 p" file   #print 1-5
 sed -n '5,$ p" file   #print 5-last
 ```
-######substitute
+### 3 Introducing the Substitute Feature
 ```
 sed '1,3 s/old/new/' file
-sed '/^root/ s@/bin/bash@/bin/sh@ ' file          ##change delimiter
+sed '/^root/ s@/bin/bash@/bin/sh@ ' file          # change delimiter, the first character following the s  represents the delimiters
 ```
-######using substitute
+### 4 Using the Substitute Feature
 print line number
 ```
 nl filename
@@ -66,7 +66,7 @@ nl filename
 sed '6,9 s/^/   /g' file     #sub line 6-9 prepend space
 ```
 
-######insert,append delete
+### 5 Insert,Append, and Delete
 insert = prepend (insert newline before a line)
 ```
 sed ' /^root/ i newline' filename
