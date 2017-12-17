@@ -72,9 +72,16 @@ insert = prepend (insert newline before a line)
 sed ' /^root/ i newline' filename
 sed ' /^root/ i newline' filename
 ```
+a =append
+```
+sed ' /^server 3/ a anewline' /etc/ntp.conf
+```
 
-
-######multiple exp
+### 7 Using Multiple Expressions Within sed
+inline
+```
+sed '{/^server 0/ i newline /^server\s[0-9]\.ub/ d }' /etc/conf
+```
 code reuse
 func.sed
 ```
@@ -85,13 +92,15 @@ call it
 ```
 sed -f func.sed filename
 ```
-######remote edits with ssh
+
+__Nothing is written to the file unless the -i option is used__
+### 7 Remote Edits Using sed Over with ssh
 ```
-ssh -t user@server sudo sed -i.bak -f /remote/func.sed /remote/file
+ssh -t user@server sudo sed -i.bak -f /remote/func.sed /remote/file    # -t means assign a TTY allowing for sudo password
 ```
 
-#####subsitiution grouping with sed
-######introducing
+## 5. subsitiution grouping with sed
+### 1 Introducing Substitution Groups
 ```
 sed 's@\([^,]*\),\([^,]*\)@\U\1\L\2@' file          //sub first group with uppercase, second with lowercase
 ```
