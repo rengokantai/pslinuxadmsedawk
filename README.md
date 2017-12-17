@@ -34,8 +34,8 @@ ifconfig eth1 | awk -F":" '/string/{print toupper($2 $3)}'
 ```
 
 
-#####regular ex
-######identify boud
+## 3. Regular Expressions
+### 4 Identify Boundaries with Strings
 word boundaries = space , -  
 \s = space,empty line...
 
