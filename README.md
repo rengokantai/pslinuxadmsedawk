@@ -23,6 +23,11 @@ get version
 ask -W version
 ```
 
+note the space
+```
+awk ' BEGIN { print "ntp.conf" } { print } END { print NR } ' /etc/ntp.conf
+```
+
 print fields with string match
 ```
 ifconfig eth1 | awk -F":" '/string/{print toupper($2 $3)}'
