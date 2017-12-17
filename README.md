@@ -1,16 +1,34 @@
-#### pslinuxadmsedawk
+# pslinuxadmsedawk
 
-#####getting started
-######sed
+## 1. getting started
+### 2 An Introduction to grep
 ```
-sed -n '1 p' /etc/passwd  //only print 1st line. without -n, will print all.
-sed -i.bak '/^$/d' /etc/passwd 
+grep ^user /etc/passwd    #line starting with user
 ```
-######awk
+### 3 Introducing sed
+```
+sed -n 'p' /etc/passwd   # print matching line and duplicate
+sed -n 'p' /etc/passwd   # print matching line
+```
+```
+sed -n '1 p' /etc/passwd  # only print 1st line. without -n, will print all.
+sed -n '1,5 p' /etc/passwd  # print line 1 to line 5
+sed -n ' /^user/ p' /etc/passwd  # print startwith user
+sed -i.bak '/^$/ d' /etc/passwd    # delete empty line
+sed -i.bak '/^#/ d ; /^$/ d' /etc/passwd    # delete empty line and comment line
+```
+### 4 DIY 'r' Us Welcome awk
 get version
 ```
 ask -W version
 ```
+
+print fields with string match
+```
+ifconfig eth1 | awk -F":" '/string/{print toupper($2 $3)}'
+```
+
+
 #####regular ex
 ######identify boud
 word boundaries = space , -  
