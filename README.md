@@ -166,8 +166,8 @@ in file 2:
 r while
 ```
 
-#####fundamental awk
-######intro awk
+## 7. Fundamentals of awk
+### 1 Introduction to awk
 user.awk (a function)
 ```
 BEGIN {FS=":";print"header"}          # awk -F":"
@@ -193,7 +193,7 @@ BEGIN {FS=":";print"header"}
 /^root/{print $1;count++}           #do not initialize count
 END {print "total user =" count}    #print count
 ```
-######employee application
+### 3 The Employee Application
 ```
 BEGIN {FS=":";print"header"}          
 $3 > 300 {print toupper($1)}           #toupper function
@@ -251,8 +251,9 @@ BEGIN {FS="[><]"; RS="\n\n";OFS=" ";}  # >< are seperators
 $0 ~ search {print }
 ```
 
-#####analyze web logs awk
-######creating summary 
+## 9. Analyze Web Logs with awk
+### 3 Creating Summary with sed and awk
+#### 1:00
 count.awk
 ```
 BEGIN{FS=" ";print "log access:"}
