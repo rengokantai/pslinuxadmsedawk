@@ -230,21 +230,22 @@ call:
 ```
 lastlog | awk -f lastlog.awk
 ```
-#####displaying records from flat files using awk
+## 8. Displaying Records from Flat Files Using awk
 let's see sed version. Delete all empty line, and append newline after </Virtualhost> /a means append.  \ means new line
 ```
 sed ' /^\s*$/d;/^<\/Virtual/a \ ' host.conf
 ```
 now is awk version  RS = record seperator, ~ means search
 ```
-BEGIN {RS="\n\n";}    #only print until current paragraph ends
+BEGIN {RS="\n\n";}    #only print until current paragraph ends,  use \n\n as `field seperator`
 $0 ~ search {print }
 ```
+#### 2:40
 use
 ```
 awk -f virtual.awk search=keywordyouchoose virtual.conf
 ```
-######using multiple field seperator, the new application release
+### 6 Using Multiple Field Seperator, the new application release
 OFS = output seperator, for example print $2 $3   then OFS will print between $2 and $3
 ```
 BEGIN {FS="[><]"; RS="\n\n";OFS=" ";}  # >< are seperators
