@@ -96,7 +96,8 @@ sed -f func.sed filename
 __Nothing is written to the file unless the -i option is used__
 ### 7 Remote Edits Using sed Over with ssh
 ```
-ssh -t user@server sudo sed -i.bak -f /remote/func.sed /remote/file    # -t means assign a TTY allowing for sudo password
+scp ntp.sed user@192.168.0.1:/tmp/
+ssh -t user@server sudo sed -i.bak -f /tmp/func.sed /remote/file    # -t means assign a TTY allowing for sudo password
 ```
 
 ## 5. subsitiution grouping with sed
@@ -105,7 +106,7 @@ ssh -t user@server sudo sed -i.bak -f /remote/func.sed /remote/file    # -t mean
 sed 's@\([^,]*\),\([^,]*\)@\U\1\L\2@' file          //sub first group with uppercase, second with lowercase
 ```
 
-######numerical group
+### 2 Understanding Numerical Groups
 in sed, all parentheses need to be escaped
 ```
 s/\(^\|[^0-9.]\)\([0-9]\+\)/\1\2/g
@@ -115,8 +116,8 @@ sed can be applied to all files in a folder
 sed -f func.sed folder/*
 ```
 
-#####execute commands with sed
-######sed
+## 6. Execute Commands with sed
+### 1.Introduction
 we have a file list,content is
 ```
 /etc/hosts
@@ -124,6 +125,10 @@ we have a file list,content is
 we can execute
 ```
 sed 's/^/ls -l \e' list      //must have a space after -l
+```
+
+```
+sed ' /^\// s/^/tar -rf new.tar /e' cat.lise
 ```
 
 we have a file user,content is
@@ -140,7 +145,7 @@ sed 's/^/sudo useradd \e' user     //sudo useradd user1,sudo useradd user2....
 tar -tf x.tar  //see names of tar file
 ```
 
-######sed in vim
+### 3. Using sed Within vim
 ```
 %s/old/new/g       //all doc
 2,3s/old/new/g     //2-3line
@@ -151,7 +156,7 @@ multireplace
 
 5,7s/^/  /      //line5-7
 ```
-######read write files
+### 4. Reading and Writing to Files
 in file 1:
 ```
 4,10 w while
